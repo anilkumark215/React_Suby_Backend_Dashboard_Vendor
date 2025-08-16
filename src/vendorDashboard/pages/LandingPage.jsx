@@ -17,7 +17,7 @@ const LandingPage = () => {
   const [showWelcome, setShowWelcome]  =  useState(false)
   const [showAllProducts, setShowAllProducts] = useState(false)
   const [shpwLogOut , setShowLogOut]  = useState(false)
-  const [showFirmTitle ,setShowFirmTitle] = useState(true)
+  //const [showFirmTitle ,setShowFirmTitle] = useState(true)
 
   useEffect(()=>{
     const loginToken = localStorage.getItem('loginToken');
@@ -26,20 +26,20 @@ const LandingPage = () => {
     }
   },[])
 
-  useEffect(() =>{
-   const firmName = localStorage.getItem('firmName');
-   if(firmName){
-    setShowFirmTitle(false);
-   }
-  },[])
+  // useEffect(() =>{
+  //  const firmName = localStorage.getItem('firmName');
+  //  if(firmName){
+  //   setShowFirmTitle(false);
+  //  }
+  // },[])
 
   const logOutHandler = () => {
     confirm("Are you sure to logout")
-    localStorage.removeItem("loginToken");
-    localStorage.removeItem("firmId");
+    // localStorage.removeItem("loginToken");
+    // localStorage.removeItem("firmId");
     localStorage.removeItem("firmName");
     setShowLogOut(false)
-    setShowFirmTitle(true)
+  //  setShowFirmTitle(true)
   }
 
   const showLoginHandle = () =>{
@@ -63,32 +63,32 @@ const LandingPage = () => {
   }
 
   const showFirmHandler = () => {
-    if(shpwLogOut){
+  //  if(shpwLogOut){
     setShowRegister(false)
     setShowLogin(false)
     setShowFirm(true)
     setShowProduct(false)
     setShowWelcome(false)
     setShowAllProducts(false)
-    }else {
-      alert("Please Login");
-      setShowLogin(true)
-    }
+    // }else {
+    //   alert("Please Login");
+    //   setShowLogin(true)
+    // }
 
   }
 
   const showProductHandler = () => {
-  if(shpwLogOut){
+//  if(shpwLogOut){
     setShowRegister(false)
     setShowLogin(false)
     setShowFirm(false)
     setShowWelcome(false)
     setShowProduct(true)
      setShowAllProducts(false)
-  }else{
-  alert("Please Login");
-  setShowLogin(true)
-  }
+  // }else{
+  // alert("Please Login");
+  // setShowLogin(true)
+  // }
   }
  
   const showWelcomeHandler = () => {
@@ -101,17 +101,17 @@ const LandingPage = () => {
   }
    
   const setShowAllProductsHandler = () => {
-    if(shpwLogOut){
+  //  if(shpwLogOut){
     setShowRegister(false)
     setShowLogin(false)
     setShowFirm(false)
     setShowProduct(false)
     setShowWelcome(false)
     setShowAllProducts(true)
-  } else {
-      alert("Please Login");
-      setShowLogin(true)
-    }
+  // } else {
+  //     alert("Please Login");
+  //     setShowLogin(true)
+  //   }
   }
 
   return (
@@ -124,14 +124,14 @@ const LandingPage = () => {
         <div className="collectionSection">
         <SideBar showFirmHandler = {showFirmHandler} showProductHandler = {showProductHandler}
         setShowAllProductsHandler = {setShowAllProductsHandler}
-        showFirmTitle = {showFirmTitle}
+       // showFirmTitle = {showFirmTitle}
         />
       {showLogin &&<Login showWelcomeHandler ={showWelcomeHandler}/>}
       {showRegister && <Register showLoginHandle = {showLoginHandle} /> }
-      {showFirm && shpwLogOut &&<AddFirm/>}
-       {showProduct && shpwLogOut &&<AddProduct/>}
+      {showFirm &&<AddFirm/>}
+       {showProduct &&<AddProduct/>}
        {showWelcome && <Welcome/>}
-       {showAllProducts && shpwLogOut &&<AllProducts/>}
+       {showAllProducts &&<AllProducts/>}
        
         
         </div>
